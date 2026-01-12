@@ -163,38 +163,33 @@
 				<h2 class="major">Get in touch</h2>
 				<p>Interested in collaborating, hiring, or reviewing my work?
 					Reach out via email, LinkedIn, or GitHub — I’m always open to meaningful conversations.</p>
-				<form action="https://saveform.io/api/submit/YOUR_FORM_ID" method="POST">
-  <!-- Honeypot for spam protection (optional but recommended) -->
-  <input type="text" name="_honey" style="display:none" />
+				<form method="POST" action="https://formsubmit.co/f/your-unique-hash">
+					<div class="fields">
+						<div class="field">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" placeholder="Your Name" required />
+						</div>
+						<div class="field">
+							<label for="email">Email</label>
+							<input type="email" name="email" id="email" placeholder="your@email.com" required />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="4" placeholder="Your message here..."
+								required></textarea>
+						</div>
+					</div>
 
-  <div class="fields">
-    <div class="field">
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" placeholder="Your Name" required />
-    </div>
+					<ul class="actions">
+						<li><input type="submit" value="Send Message" /></li>
+					</ul>
 
-    <div class="field">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" placeholder="your@email.com" required />
-    </div>
+					<!-- Optional: disable captcha (not recommended for public forms) -->
+					<input type="hidden" name="_captcha" value="false">
 
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea name="message" id="message" rows="4" placeholder="Your message…" required></textarea>
-    </div>
-  </div>
-
-  <!-- Optional: send you email notification on submission -->
-  <input type="hidden" name="_emailTo" value="your-email@example.com">
-
-  <!-- Optional: instant redirect to a thank‑you page -->
-  <input type="hidden" name="_redirect" value="https://cliff-mboya.github.io/thank-you.html" />
-  <input type="hidden" name="_redirect_mode" value="direct" />
-
-  <ul class="actions">
-    <li><input type="submit" value="Send Message" /></li>
-  </ul>
-</form>
+					<!-- Redirect after submission -->
+					<input type="hidden" name="_next" value="https://cliff-mboya.github.io/thank-you.html">
+				</form>
 				<ul class="contact">
 					<li class="icon solid fa-home">
 						Nairobi,Kenya<br />

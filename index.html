@@ -1,222 +1,804 @@
-<!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Cliff-Mboya</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Cliff Mboya, Senior QA Engineer</title>
+	<meta name="description" content="Cliff Mboya is a senior QA engineer and consultant helping teams and fintechs plan, run and sign off releases: test strategy, UAT, regression, automation and payments testing." />
+	<meta property="og:title" content="Cliff Mboya, Senior QA Engineer" />
+	<meta property="og:description" content="QA consulting for teams and fintechs: test strategy, UAT, regression, automation and payments testing." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://cliff-mboya.github.io/" />
+	<meta property="og:image" content="https://cliff-mboya.github.io/assets/images/cliff.jpg" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--paper: #F2F4F1;
+			--surface: #FFFFFF;
+			--ink: #182620;
+			--muted: #56645D;
+			--rule: #D5DCD6;
+			--pass: #1D7A4C;
+			--pass-soft: #DDEFE4;
+			--run: #9A6514;
+			--band: #182620;
+			--band-ink: #E4ECE7;
+			--band-muted: #93A79E;
+			--band-pass: #5CD394;
+		}
+		*, *::before, *::after { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+		body {
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: "Schibsted Grotesk", system-ui, sans-serif;
+			font-size: 1.0625rem;
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+		}
+		img { max-width: 100%; display: block; }
+		a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+		a:hover { color: var(--pass); }
+		:focus-visible { outline: 2px solid var(--pass); outline-offset: 3px; border-radius: 2px; }
+		.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+		/* Header */
+		header.top { padding: 24px 0; }
+		header.top .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+		.brand { font-weight: 800; text-decoration: none; letter-spacing: -0.01em; }
+		nav.links { display: flex; gap: 24px; font-size: 0.95rem; }
+		nav.links a { text-decoration: none; color: var(--muted); }
+		nav.links a:hover { color: var(--ink); }
+
+		/* Hero */
+		.hero { padding: 40px 0 88px; }
+		.hero .wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; }
+		.hero .role { font-size: 1.125rem; font-weight: 500; color: var(--pass); margin: 0 0 16px; }
+		.hero h1 {
+			font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+			line-height: 1;
+			letter-spacing: -0.035em;
+			font-weight: 800;
+			margin: 0 0 24px;
+			max-width: 14ch;
+		}
+		.hero p.lede { font-size: 1.2rem; line-height: 1.55; max-width: 44ch; margin: 0 0 32px; color: var(--muted); }
+		.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+		.btn {
+			display: inline-block; padding: 12px 20px; border-radius: 6px;
+			font-weight: 500; text-decoration: none; font-size: 1rem;
+			border: 1px solid var(--ink);
+		}
+		.btn.primary { background: var(--ink); color: var(--paper); }
+		.btn.primary:hover { background: var(--pass); border-color: var(--pass); color: #fff; }
+		.btn.ghost:hover { border-color: var(--pass); }
+		.portrait { position: relative; }
+		.portrait { margin: 0; }
+		.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+		.portrait figcaption {
+			position: absolute; left: 16px; bottom: 16px;
+			background: var(--surface); color: var(--ink);
+			padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; line-height: 1.35;
+		}
+		.portrait figcaption strong { display: block; }
+		.portrait figcaption span { color: var(--muted); }
+
+		/* Sections */
+		section.block { padding: 88px 0; }
+		section.alt { background: var(--surface); }
+		.section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+		.block h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); letter-spacing: -0.025em; line-height: 1.1; margin: 0; font-weight: 800; }
+		.section-head p { margin: 0; color: var(--muted); max-width: 58ch; }
+
+		/* Client logos */
+		.clients { padding: 40px 0 48px; border-top: 1px solid var(--rule); }
+		.clients p { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; }
+		.logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+		.logos li {
+			height: 84px; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px;
+			display: flex; align-items: center; justify-content: center; padding: 14px 18px; overflow: hidden;
+		}
+		.logos img { max-height: 100%; width: auto; object-fit: contain; }
+		.logos .wordmark { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; color: #182620; text-align: center; line-height: 1.1; }
+		.logos .wordmark small { display: block; font-weight: 500; font-size: 0.75rem; color: #56645D; letter-spacing: 0; margin-top: 3px; }
+
+		/* Services */
+		.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+		.service { padding: 32px 32px 32px 0; border-bottom: 1px solid var(--rule); }
+		.service:nth-child(even) { padding: 32px 0 32px 32px; border-left: 1px solid var(--rule); }
+		.service h3 { font-size: 1.25rem; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
+		.service p { margin: 0 0 12px; color: var(--muted); max-width: 46ch; }
+		.service .result { margin: 0; color: var(--ink); font-weight: 500; }
+
+		/* Engagements */
+		.engagements { display: grid; gap: 20px; }
+		.case {
+			display: grid; grid-template-columns: 200px 1fr; gap: 40px;
+			background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 32px;
+		}
+		section.alt .case { background: var(--paper); }
+		.case .logo-tile {
+			height: 96px; background: #FFFFFF; border: 1px solid var(--rule); border-radius: 8px;
+			display: flex; align-items: center; justify-content: center; padding: 14px;
+		}
+		.case .logo-tile img { max-height: 100%; width: auto; object-fit: contain; }
+		.case .logo-tile .wordmark { font-weight: 800; font-size: 1.2rem; color: #182620; text-align: center; line-height: 1.1; letter-spacing: -0.02em; }
+		.case .logo-tile .wordmark small { display: block; font-weight: 500; font-size: 0.75rem; color: #56645D; letter-spacing: 0; margin-top: 3px; }
+		.case .meta { margin: 12px 0 0; font-size: 0.9rem; color: var(--muted); }
+		.case h3 { font-size: 1.35rem; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.015em; }
+		.case .brief { margin: 0 0 16px; color: var(--muted); max-width: 62ch; }
+		.case ul.done { margin: 0 0 16px; padding-left: 1.1em; max-width: 64ch; }
+		.case ul.done li { margin: 4px 0; }
+		.case ul.done li::marker { color: var(--pass); }
+		.now { display: inline-block; margin-left: 10px; vertical-align: 3px; font-size: 0.8rem; font-weight: 500; color: var(--pass); background: var(--pass-soft); padding: 1px 9px; border-radius: 999px; }
+		.now.building { color: var(--run); background: transparent; border: 1px solid var(--run); }
+		.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+		.tags li { font-size: 0.85rem; color: var(--muted); border: 1px solid var(--rule); padding: 2px 10px; border-radius: 999px; }
+
+		/* Track record band */
+		section.band { background: var(--band); color: var(--band-ink); }
+		section.band .section-head p { color: var(--band-muted); }
+		.stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.14); }
+		.stat { padding: 32px 32px 32px 0; border-bottom: 1px solid rgba(255,255,255,0.14); }
+		.stat + .stat { padding-left: 32px; border-left: 1px solid rgba(255,255,255,0.14); }
+		.stat:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+		.stat .fig { display: block; font-size: clamp(2.75rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #FFFFFF; margin-bottom: 14px; font-variant-numeric: tabular-nums; }
+		.stat .fig.wide { font-size: clamp(2.25rem, 3.9vw, 3.1rem); white-space: nowrap; line-height: 1.29; }
+		.stat .fig small { font-size: 0.5em; letter-spacing: -0.02em; color: var(--band-pass); }
+		.stat .what { display: block; font-weight: 500; font-size: 1.05rem; margin-bottom: 6px; color: var(--band-ink); }
+		.stat .ctx { display: block; font-size: 0.95rem; color: var(--band-muted); max-width: 30ch; }
+		.stat .what::before { content: "PASS"; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.7rem; font-weight: 500; color: var(--band-pass); border: 1px solid var(--band-pass); border-radius: 4px; padding: 1px 5px; margin-right: 8px; vertical-align: 2px; }
+
+		/* Products */
+		.products { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+		.product { border: 1px solid var(--rule); border-radius: 12px; padding: 32px; background: var(--surface); }
+		section.alt .product { background: var(--paper); }
+		.product h3 { font-size: 1.35rem; margin: 0 0 4px; font-weight: 700; letter-spacing: -0.015em; }
+		.product h3 a { text-decoration: none; }
+		.product h3 a:hover { text-decoration: underline; }
+		.product .meta { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
+		.product p { margin: 0 0 14px; }
+		.product ul.done { margin: 0 0 16px; padding-left: 1.1em; }
+		.product ul.done li { margin: 4px 0; }
+		.product ul.done li::marker { color: var(--pass); }
+
+		/* Contact */
+		.contact-line { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 20px; max-width: 22ch; }
+		.contact-sub { color: var(--muted); max-width: 52ch; margin: 0 0 32px; }
+		.contact-list { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 28px; color: var(--muted); }
+
+		footer { padding: 32px 0; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--rule); }
+
+		@media (max-width: 900px) {
+			.hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+			.portrait { max-width: 420px; }
+			.section-head { grid-template-columns: 1fr; gap: 16px; }
+			.logos { grid-template-columns: repeat(3, 1fr); }
+			.services { grid-template-columns: 1fr; }
+			.service, .service:nth-child(even) { padding: 28px 0; border-left: 0; }
+			.case { grid-template-columns: 1fr; gap: 20px; }
+			.case .logo-tile { width: 200px; }
+			.products { grid-template-columns: 1fr; }
+			.stats { grid-template-columns: 1fr 1fr; }
+			.stat, .stat + .stat { padding: 28px 24px 28px 0; border-left: 0; }
+			.stat:nth-child(even) { padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.14); }
+			section.block { padding: 64px 0; }
+		}
+		@media (max-width: 560px) {
+			.wrap { padding: 0 16px; }
+			nav.links { gap: 14px; font-size: 0.9rem; }
+			nav.links .opt { display: none; }
+			.hero { padding: 16px 0 64px; }
+			.logos { grid-template-columns: repeat(2, 1fr); }
+			.case { padding: 22px; }
+			.stats { grid-template-columns: 1fr; }
+			.stat, .stat + .stat, .stat:nth-child(even) { padding: 24px 0; border-left: 0; }
+		}
+
+		/* Colour and life */
+		section.tint { background: #E5F2EA; }
+		.portrait::before { content: ""; position: absolute; inset: 22px -18px -18px 22px; background: #2BB673; border-radius: 12px; z-index: 0; }
+		.portrait img, .portrait figcaption { position: relative; z-index: 1; }
+		.portrait figcaption { position: absolute; z-index: 2; }
+		.ico { display: inline-flex; width: 44px; height: 44px; border-radius: 10px; align-items: center; justify-content: center; margin-bottom: 16px; }
+		.ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+		.ico.i1 { background: #DDF3E6; color: #17784A; }
+		.ico.i2 { background: #FFF1D6; color: #A86400; }
+		.ico.i3 { background: #E3ECFB; color: #2852A8; }
+		.ico.i4 { background: #F6E3EF; color: #9A2F6E; }
+		.product { padding: 0 0 28px; overflow: hidden; }
+		.product > :not(.shot) { margin-left: 32px; margin-right: 32px; }
+		.shot { height: 230px; margin-bottom: 26px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+		.shot.fundzi { background: #0E8F4F; }
+		.shot.afya { background: #0B5E57; align-items: center; }
+		.phone { width: 230px; height: 200px; background: #F7F8F6; border-radius: 22px 22px 0 0; padding: 18px 14px 0; position: relative; box-shadow: 0 -2px 0 6px rgba(255,255,255,0.12); }
+		.fz-card { background: #fff; border-radius: 10px; padding: 12px; border: 1px solid #E2E6E3; }
+		.fz-title { margin: 0 0 8px; font-size: 0.8rem; font-weight: 700; color: #182620; line-height: 1.3; }
+		.fz-bar { height: 7px; border-radius: 99px; background: #E3EBE6; overflow: hidden; margin-bottom: 6px; }
+		.fz-bar span { display: block; height: 100%; background: #0E8F4F; border-radius: 99px; }
+		.fz-num { margin: 0; font-size: 0.72rem; color: #56645D; }
+		.fz-num strong { color: #182620; }
+		.stk { position: absolute; left: 22px; right: 22px; bottom: 16px; background: #fff; border-radius: 8px; padding: 10px 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); border-top: 3px solid #43B02A; }
+		.stk p { margin: 0; font-size: 0.74rem; color: #182620; font-weight: 500; line-height: 1.35; }
+		.stk .pin { color: #56645D; font-weight: 400; margin-top: 4px; letter-spacing: 0.02em; }
+		.chat { width: min(300px, 86%); display: flex; flex-direction: column; gap: 6px; }
+		.msg { margin: 0; font-size: 0.76rem; line-height: 1.35; padding: 7px 10px; border-radius: 9px; max-width: 82%; color: #182620; }
+		.msg.in { background: #FFFFFF; align-self: flex-start; border-top-left-radius: 2px; }
+		.msg.out { background: #D5F5C9; align-self: flex-end; border-top-right-radius: 2px; }
+		section.cta-band { background: #17784A; color: #FFFFFF; }
+		section.cta-band .contact-sub, section.cta-band .contact-list { color: #D3EBDD; }
+		section.cta-band .btn.primary { background: #FFFFFF; color: #17784A; border-color: #FFFFFF; }
+		section.cta-band .btn.primary:hover { background: #E5F2EA; color: #0E5C37; }
+		section.cta-band a:hover { color: #FFFFFF; }
+		footer { background: #17784A; color: #BFE0CC; border-top-color: rgba(255,255,255,0.15); }
+		.product ul.done { margin: 0 32px 16px; padding-left: 1.2em; }
+		@media (max-width: 560px) {
+			.product ul.done { margin: 0 22px 16px; }
+			.product > :not(.shot) { margin-left: 22px; margin-right: 22px; }
+			.portrait::before { inset: 14px -10px -10px 14px; }
+		}
+		/* Experience on dark */
+		section.dark-cases .case { background: #22332B; border-color: rgba(255,255,255,0.10); }
+		section.dark-cases .case h3 { color: #FFFFFF; }
+		section.dark-cases .case .brief, section.dark-cases .case .meta { color: var(--band-muted); }
+		section.dark-cases .case ul.done { color: var(--band-ink); }
+		section.dark-cases .case ul.done li::marker { color: var(--band-pass); }
+		section.dark-cases .tags li { color: #C3D2CA; border-color: rgba(255,255,255,0.18); }
+		section.dark-cases .now { background: rgba(92,211,148,0.15); color: var(--band-pass); }
+		section.dark-cases .logo-tile { border-color: transparent; }
+		.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+		.open-to { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,0.22); }
+		.open-to li { padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.22); }
+		.open-to h3 { margin: 0 0 4px; font-size: 1.15rem; font-weight: 700; color: #FFFFFF; }
+		.open-to p { margin: 0; color: #D3EBDD; max-width: 44ch; }
+		@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+		/* Interactive layer */
+		header.top { position: sticky; top: 0; z-index: 50; background: rgba(242,244,241,0.88); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); padding: 16px 0; transition: box-shadow 0.2s; }
+		header.top.scrolled { box-shadow: 0 1px 0 var(--rule); }
+		nav.links a { position: relative; padding: 4px 0; }
+		nav.links a.active { color: var(--ink); }
+		nav.links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--pass); border-radius: 2px; }
+		section[id] { scroll-margin-top: 64px; }
+		.logos li { transition: transform 0.2s ease, border-color 0.2s; }
+		.logos li:hover { transform: translateY(-3px); border-color: var(--pass); }
+		.fig.swap .to { display: none; }
+		.fig.swap.done .to { display: inline; }
+		.fz-bar span { width: 68%; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+		.shot { position: relative; }
+		.stk { display: block; width: auto; text-align: left; font: inherit; cursor: pointer; border: 0; transition: transform 0.15s, background 0.2s; }
+		.stk:hover { transform: translateY(-2px); }
+		.stk:active { transform: translateY(0); }
+		.stk:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+		.stk .stk-line { display: block; font-size: 0.74rem; color: #182620; font-weight: 500; line-height: 1.35; }
+		.stk .stk-pin { display: block; font-size: 0.72rem; color: #17784A; font-weight: 500; margin-top: 4px; }
+		.stk.ok { background: #EAF8EE; }
+		.try { position: absolute; top: 14px; right: 14px; font-size: 0.75rem; font-weight: 500; color: #FFFFFF; background: rgba(255,255,255,0.18); padding: 3px 10px; border-radius: 999px; }
+		.replay { position: absolute; top: 14px; right: 14px; font: inherit; font-size: 0.75rem; font-weight: 500; color: #FFFFFF; background: rgba(255,255,255,0.18); border: 0; padding: 3px 10px; border-radius: 999px; cursor: pointer; }
+		.replay:hover { background: rgba(255,255,255,0.3); }
+		.msg { transition: opacity 0.3s ease, transform 0.3s ease; }
+		.chat.play .msg { opacity: 0; transform: translateY(6px); }
+		.chat.play .msg.show { opacity: 1; transform: none; }
+		.typing { align-self: flex-end; background: #D5F5C9; border-radius: 9px; padding: 8px 10px; display: none; gap: 3px; }
+		.typing.on { display: inline-flex; }
+		.typing i { width: 5px; height: 5px; border-radius: 50%; background: #3E6B4F; animation: blink 1s infinite; }
+		.typing i:nth-child(2) { animation-delay: 0.15s; } .typing i:nth-child(3) { animation-delay: 0.3s; }
+		@keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+		@media (prefers-reduced-motion: reduce) {
+			.fz-bar span, .msg, .logos li, .stk { transition: none; }
+		}
+
+		/* Crawling bugs: black and white beetles with a 0 or 1, right margin only */
+		.bug-layer { position: fixed; top: 0; bottom: 0; right: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+		.bug { position: absolute; left: 0; top: 0; width: 28px; height: 28px; pointer-events: auto; cursor: crosshair; border: 0; padding: 0; background: none; will-change: transform;
+			filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff); }
+		.bug svg { width: 100%; height: 100%; display: block; overflow: visible; }
+		.bug .legs path { transform-origin: 13px 14px; }
+		.bug.walk .legs path { animation: scuttle 0.18s infinite alternate ease-in-out; }
+		.bug.walk .legs path:nth-child(even) { animation-direction: alternate-reverse; }
+		@keyframes scuttle { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+		.bug .bit { font: 700 7.5px/1 "JetBrains Mono", ui-monospace, monospace; fill: #FFFFFF; }
+		.bug.dead { pointer-events: none; }
+		.bug.dead svg { transition: transform 0.4s ease, opacity 1.4s ease 0.6s; transform: rotate(180deg) scale(0.8); opacity: 0; }
+		.splat { position: absolute; width: 24px; height: 24px; pointer-events: none; animation: splat 1.6s steps(5) forwards;
+			background:
+				linear-gradient(#182620,#182620) 2px 10px / 4px 4px no-repeat,
+				linear-gradient(#182620,#182620) 18px 6px / 4px 4px no-repeat,
+				linear-gradient(#182620,#182620) 10px 18px / 4px 4px no-repeat,
+				linear-gradient(#182620,#182620) 14px 0 / 4px 4px no-repeat,
+				linear-gradient(#182620,#182620) 6px 2px / 4px 4px no-repeat; }
+		@keyframes splat { 0% { transform: scale(0.4); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+		.fixed-pop { position: absolute; pointer-events: none; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.68rem; font-weight: 500; color: #FFFFFF; background: #182620; border: 1px solid #FFFFFF; padding: 2px 5px; border-radius: 3px; line-height: 1.25; text-align: center; animation: pop 1.4s steps(8) forwards; }
+		@keyframes pop { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-32px); opacity: 0; } }
+		.bug-count { position: fixed; right: 16px; bottom: 16px; z-index: 45; font-size: 0.8rem; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); padding: 6px 12px; border-radius: 999px; box-shadow: 0 4px 14px rgba(24,38,32,0.08); opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; pointer-events: none; }
+		.bug-count.on { opacity: 1; transform: none; }
+		.bug-count b { color: var(--pass); }
+	</style>
 </head>
+<body>
 
-<body class="is-preload">
-
-	<!-- Page Wrapper -->
-	<div id="page-wrapper">
-
-		<!-- Header -->
-		<header id="header" class="alt">
-			<h1><a href="index.html">Cliff Mboya</a></h1>
-			<nav>
+	<header class="top">
+		<div class="wrap">
+			<a class="brand" href="#">Cliff Mboya</a>
+			<nav class="links" aria-label="Sections">
+				<a href="#services">What I build</a>
+				<a class="opt" href="#products">Projects</a>
+				<a href="#engagements">Experience</a>
+				<a href="#contact">Contact</a>
 			</nav>
-		</header>
+		</div>
+	</header>
 
-
-		<!-- Banner -->
-		<section id="banner">
-			<div class="inner">
-				<div class="logo"><span class="icon fa-gem"></span></div>
-				<h2>Cliff Mboya</h2>
-				<p>Software Test Engineer with hands-on experience designing automation frameworks and driving quality
-					across large-scale systems. Specialized in manual testing, test automation, CI/CD integration, and
-					API testing, passionate about AI and cybersecurity.</p>
+	<main>
+		<!-- Hero -->
+		<section class="hero">
+			<div class="wrap">
+				<div>
+					<p class="role">Senior QA Engineer</p>
+					<h1>Releases your team can sign off with confidence.</h1>
+					<p class="lede">I help teams and fintechs plan, run and report the testing behind major releases, from test strategy and UAT to automation, payments integrations and the board-level go/no-go.</p>
+					<div class="cta">
+						<a class="btn primary" href="mailto:mboyacliffoch@gmail.com?subject=QA%20engagement">Start a conversation</a>
+						<a class="btn ghost" href="#engagements">See my experience</a>
+					</div>
+				</div>
+				<figure class="portrait">
+					<img src="assets/images/cliff.jpg" alt="Portrait of Cliff Mboya" width="720" height="897" />
+					<figcaption><strong>Cliff Mboya</strong><span>Nairobi, Kenya</span></figcaption>
+				</figure>
 			</div>
 		</section>
 
-		<!-- Wrapper -->
-		<section id="wrapper">
+		<!-- Clients -->
+		<div class="wrap clients">
+			<p>Organisations I have worked with</p>
+			<ul class="logos">
+				<li><img src="assets/images/invent.png" alt="Invent Consulting" /></li>
+				<li><img src="assets/images/faulu.png" alt="Faulu Microfinance Bank, a member of the Old Mutual Group" /></li>
+				<li><img src="assets/images/singlify.png" alt="Singlify" /></li>
+				<li><img src="assets/images/emmerce.png" alt="Emmerce" /></li>
+				<li><img src="assets/images/systech.png" alt="Systech" /></li>
+			</ul>
+		</div>
 
-			<!-- One -->
-			<section id="one" class="wrapper spotlight style1">
-				<div class="inner">
-					<a href="#" class="image"><img src="assets/images/pic01Automation.jpg" alt="" /></a>
-					<div class="content">
-						<h2 class="major">Automation Framework</h2>
-						<p style="text-align: left;">
-							I design and build robust Selenium automation frameworks using Java, TestNG, and the Page
-							Object Model. My frameworks support parallel execution, retry mechanisms, cross-browser
-							testing, and detailed reporting to ensure fast feedback and reliable test results.
-
-							These solutions have automated 200+ test cases and significantly reduced regression time
-							from days to hours.</p>
-						<a href="#" class="special">My Work</a>
-					</div>
+		<!-- Track record -->
+		<section class="block band" id="record">
+			<div class="wrap">
+				<div class="section-head">
+					<h2>Track record</h2>
+					<p>Results from banking, fintech and enterprise software teams I've worked with.</p>
 				</div>
-			</section>
-
-			<!-- Two -->
-			<section id="two" class="wrapper alt spotlight style2">
-				<div class="inner">
-					<a href="#" class="image"><img src="assets/images/pic02Api.png" alt="" /></a>
-					<div class="content">
-						<h2 class="major">API Automation</h2>
-						<p style="text-align: left;">
-							I automate RESTful APIs using RestAssured and Postman, focusing on authentication, JSON
-							schema validation, and full CRUD coverage.
-
-							My frameworks integrate with Maven and TestNG and plug directly into CI/CD pipelines
-							(Jenkins & Azure DevOps) to provide fast, reliable feedback on API quality before release.
-						</p>
-						<a href="#" class="special">My Work</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Three -->
-			<section id="three" class="wrapper spotlight style3">
-				<div class="inner">
-					<a href="#" class="image"><img src="assets/images/pic03cicd.png" alt="" /></a>
-					<div class="content">
-						<h2 class="major">CI/CD Test Pipelines</h2>
-						<p style="text-align: left;">
-							I build and maintain CI/CD pipelines using Jenkins and GitHub Actions to run automated tests
-							on every pull request.
-
-							This setup improved pipeline execution speed by 30%, reduced regression risks, and increased
-							release confidence through automated reporting and continuous quality checks.</p>
-						<a href="#" class="special">My Work</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Four -->
-			<section id="four" class="wrapper alt style1">
-				<div class="inner">
-					<h2 class="major">Professional Experience</h2>
-					<p>Across both employed and freelance roles, I have driven quality engineering initiatives by
-						building automation frameworks, automating 3000+ test cases, and embedding quality checks into
-						CI/CD pipelines.
-
-						My work led to a 70% reduction in production defects across systems impacting over 1,000,000
-						users. I have supported cross-functional teams of 15+ engineers, worked closely with other teams
-						to improve the quality and efficiency of products.</p>
-					<section class="features">
-						<article>
-							<a href="#" class="image"><img src="assets/images/pic04Singlify.jpg" alt="" /></a>
-							<h3 class="major">Lead QA Engineer: Singlify Ltd</h3>
-							<p style="text-align: left;">
-								At Singlify, I worked as a Lead QA Engineer, building scalable Selenium frameworks with
-								TestNG and integrating them into CI/CD pipelines with Jenkins and Bitbucket. I
-								streamlined defect management both manually and through automation which improved
-								release efficiency, and I supported team onboarding to strengthen QA culture and product
-								reliability.</p>
-							<a href="https://www.singlify.app/solutions/" class="special" target="_blank"
-								rel="noopener noreferrer">
-								Learn more
-							</a>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="assets/images/pic05Emmerce.png" alt="" /></a>
-							<h3 class="major">QA Consultant: Emmerce Ltd</h3>
-							<p style="text-align: left;">
-								Consulted on test strategy, automation adoption, and coverage improvement.
-
-								Implemented structured testing processes, enhanced reporting, and improved overall
-								product quality through risk-based testing.</p>
-							<a href="https://emmerce.io/#" class="special" target="_blank" rel="noopener noreferrer">
-								Learn more
-							</a>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="assets/images/pic06Systech.png" alt="" /></a>
-							<h3 class="major">QA Analyst: Systech Ltd</h3>
-							<p style="text-align: left;">
-								Pioneered QA process improvements and introduced modern testing tools to improve
-								solution efficiency and stability.
-
-								Worked closely with developers to prevent defects early in the SDLC and strengthen
-								release quality.</p>
-							<a href="https://systechafrica.com/pension-and-retirement-benefits-software/"
-								class="special" target="_blank" rel="noopener noreferrer">
-								Learn more
-							</a>
-						</article>
-					</section>
-					<ul class="actions">
-						<li><a href="#" class="button">Browse All</a></li>
-					</ul>
-				</div>
-			</section>
-
-		</section>
-
-		<!-- Footer -->
-		<section id="footer">
-			<div class="inner">
-				<h2 class="major">Get in touch</h2>
-				<p>Interested in collaborating, hiring, or reviewing my work?
-					Reach out via email, LinkedIn, or GitHub — I’m always open to meaningful conversations and collaborations</p>
-				<form method="POST" action="https://formsubmit.co/f/your-unique-hash">
-					<div class="fields">
-						<div class="field">
-							<label for="name">Name</label>
-							<input type="text" name="name" id="name" placeholder="Your Name" required />
-						</div>
-						<div class="field">
-							<label for="email">Email</label>
-							<input type="email" name="email" id="email" placeholder="your@email.com" required />
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="4" placeholder="Your message here..."
-								required></textarea>
-						</div>
-					</div>
-
-					<ul class="actions">
-						<li><input type="submit" value="Send Message" /></li>
-					</ul>
-
-					<!-- Optional: disable captcha (not recommended for public forms) -->
-					<input type="hidden" name="_captcha" value="false">
-
-					<!-- Redirect after submission -->
-					<input type="hidden" name="_next" value="https://www.aim.com.au/sites/default/files/field/image/AIM-Blog-Why-Thank-You-Matters-More-Than-Money-New.jpg">
-				</form>
-				<ul class="contact">
-					<li class="icon solid fa-home">
-						Nairobi,Kenya<br />
-						P.O Box 71116 - 00100<br />
-						Nairobi
-					</li>
-					<li class="icon solid fa-phone">(+254)721963601</li>
-					<li class="icon solid fa-envelope"><a
-							href="mailto:mboyacliffoch@gmail.com">mboyacliffoch@gmail.com</a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Cliff-Mboya. All rights reserved.</li>
-					<li>Design:Cleeph Designs <a href="Cleeph Designs"></a></li>
+				<ul class="stats">
+					<li class="stat"><span class="fig" data-count="70" data-suffix="%">70%</span><span class="what">Fewer production defects</span><span class="ctx">After bringing in automation frameworks and CI/CD quality gates</span></li>
+					<li class="stat"><span class="fig" data-count="1" data-suffix="M+">1M+</span><span class="what">Users on systems I've tested</span><span class="ctx">Across banking, fintech and enterprise platforms</span></li>
+					<li class="stat"><span class="fig" data-count="3000" data-suffix="+">3,000+</span><span class="what">Test cases automated</span><span class="ctx">UI and API suites running on every pull request</span></li>
+					<li class="stat"><span class="fig wide swap"><span class="from">Days</span> <small>to</small> <span class="to">hours</span></span><span class="what">Regression cycle time</span><span class="ctx">Parallel, cross-browser automation replacing manual regression runs</span></li>
+					<li class="stat"><span class="fig" data-count="40" data-suffix="+">40+</span><span class="what">Banking journeys taken through UAT</span><span class="ctx">A digital bank launch on core banking, with M-Pesa, PesaLink, Interswitch, CRB and AML integrations</span></li>
+					<li class="stat"><span class="fig" data-count="15" data-suffix="+">15+</span><span class="what">Engineers supported</span><span class="ctx">Cross-functional teams across product, development and delivery</span></li>
 				</ul>
 			</div>
 		</section>
 
-	</div>
+		<!-- Services -->
+		<section class="block alt" id="services">
+			<div class="wrap">
+				<div class="section-head">
+					<h2>What I build</h2>
+					<p>I come in where quality is on the critical path: a release with a deadline, a vendor to hold to account, or a test effort that needs structure.</p>
+				</div>
+				<div class="services">
+					<div class="service">
+						<span class="ico i1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
+						<h3>QA leadership for major releases</h3>
+						<p>Test strategy and plans, UAT and SIT coordination, defect triage, regression and the readiness reporting senior leadership uses to make the release call.</p>
+						<p class="result">Clear go/no-go evidence instead of a pass rate nobody trusts.</p>
+					</div>
+					<div class="service">
+						<span class="ico i2" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/><path d="M9 8h6M9 11h4"/></svg></span>
+						<h3>Banking and payments testing</h3>
+						<p>End-to-end journeys across core banking and ESB, with M-Pesa STK Push, PesaLink, Interswitch, CRB and AML screening in the loop.</p>
+						<p class="result">Integration risk found in test, not by customers.</p>
+					</div>
+					<div class="service">
+						<span class="ico i3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/><path d="M13 4l-2 16"/></svg></span>
+						<h3>Test automation frameworks</h3>
+						<p>Playwright for fast, reliable end-to-end tests, and Selenium with Java, TestNG and the Page Object Model; API suites in RestAssured and Postman, with parallel runs, retries and reporting.</p>
+						<p class="result">Regression cut from days to hours.</p>
+					</div>
+					<div class="service">
+						<span class="ico i4" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8.5v7"/><path d="M8.5 6h3a4 4 0 0 1 4 4v-.5"/></svg></span>
+						<h3>CI/CD quality gates</h3>
+						<p>Jenkins, GitHub Actions and Azure DevOps pipelines that run the suite on every pull request and publish results the team reads.</p>
+						<p class="result">30% faster pipeline runs and fewer regressions reaching release.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+		<!-- Products -->
+		<section class="block tint" id="products">
+			<div class="wrap">
+				<div class="section-head">
+					<h2>Personal projects</h2>
+					<p>I also build products, combining hands-on engineering with AI-assisted development. Shipping real software keeps my testing grounded in how it actually gets built.</p>
+				</div>
+				<div class="products">
+					<article class="product">
+						<div class="shot fundzi" id="fz-demo">
+							<div class="phone">
+								<div class="fz-card">
+									<p class="fz-title">Mama Wanjiku's hospital bill</p>
+									<div class="fz-bar"><span id="fz-bar"></span></div>
+									<p class="fz-num"><strong>KES <span id="fz-amt">68,400</span></strong> raised of 100,000</p>
+								</div>
+								<button type="button" class="stk" id="fz-pay" aria-live="polite">
+									<span class="stk-line" id="fz-msg">Pay KES 1,000 to FUNDZI?</span>
+									<span class="stk-pin" id="fz-sub">Tap to send</span>
+								</button>
+							</div>
+							<span class="try">Try it</span>
+						</div>
+						<h3><a href="https://fundzi.co.ke" target="_blank" rel="noopener noreferrer">FundZi</a><span class="now">Live</span></h3>
+						<p class="meta">fundzi.co.ke</p>
+						<p>Group fundraising for Kenyan communities: chamas, welfare groups and harambees. Organisers share a link and contributors pay from their phones by M-Pesa.</p>
+						<ul class="done">
+							<li>Designed, built and launched it as the sole developer</li>
+							<li>Integrated Safaricom Daraja (M-Pesa STK Push) and Paystack for payments and payouts</li>
+							<li>Built paid plans and an admin dashboard</li>
+						</ul>
+						<ul class="tags">
+							<li>Next.js</li>
+							<li>Firebase</li>
+							<li>Daraja API</li>
+							<li>Paystack</li>
+						</ul>
+					</article>
+					<article class="product">
+						<div class="shot afya" id="afya-demo">
+							<button type="button" class="replay" id="afya-replay">Replay chat</button>
+							<div class="chat" aria-live="polite">
+								<p class="msg in">Hi, can I see the doctor tomorrow morning?</p>
+								<p class="msg out">Yes. Open slots: 9:00, 10:30, 11:15. Reply with a time to book.</p>
+								<p class="msg out">10:30 is yours. We'll send a reminder an hour before.</p>
+							</div>
+						</div>
+						<h3>AfyaOS<span class="now building">In development</span></h3>
+						<p class="meta">Technical co-founder</p>
+						<p>WhatsApp-native clinic management for Kenyan clinics, so patients and front desks handle bookings and follow-ups where they already talk.</p>
+						<ul class="done">
+							<li>Own the Supabase backend: schema, row-level security and auth</li>
+							<li>Review code and run separate staging and production environments</li>
+						</ul>
+						<ul class="tags">
+							<li>Supabase</li>
+							<li>PostgreSQL</li>
+							<li>WhatsApp</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</section>
 
+		<!-- Engagements -->
+		<section class="block band dark-cases" id="engagements">
+			<div class="wrap">
+				<div class="section-head">
+					<h2>Experience</h2>
+					<p>What I was brought in to do, and what changed.</p>
+				</div>
+				<div class="engagements">
+					<article class="case">
+						<div>
+							<div class="logo-tile"><img src="assets/images/invent.png" alt="Invent Consulting" /></div>
+							<p class="meta">Client: Faulu Microfinance Bank, Old Mutual Group</p>
+						</div>
+						<div>
+							<h3>Digital banking launch<span class="now">Current</span></h3>
+							<p class="brief">Lead QA on the bank's IDO omnichannel programme: a new digital channel on top of core banking, with mobile money, interbank and compliance integrations.</p>
+							<ul class="done">
+								<li>Took 40+ retail banking user journeys through UAT on a CBS/ESB architecture</li>
+								<li>Built a comprehensive regression and end-to-end suite, including golden-path and known-defect checks</li>
+								<li>Stood up a partial SIT cycle in Azure DevOps that ran alongside UAT</li>
+								<li>Reported progress and release readiness to the bank's senior leadership</li>
+							</ul>
+							<ul class="tags">
+								<li>Azure DevOps</li>
+								<li>M-Pesa STK Push</li>
+								<li>PesaLink</li>
+								<li>AML screening</li>
+								<li>CRB</li>
+								<li>Interswitch</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="case">
+						<div>
+							<div class="logo-tile"><img src="assets/images/singlify.png" alt="Singlify" /></div>
+							<p class="meta">Lead QA, 2023 to 2025</p>
+						</div>
+						<div>
+							<h3>Automation and QA practice</h3>
+							<p class="brief">Built the test automation and release discipline for a growing product team.</p>
+							<ul class="done">
+								<li>Built scalable Selenium and TestNG frameworks wired into Jenkins and Bitbucket</li>
+								<li>Streamlined defect management, manually and through automation</li>
+								<li>Onboarded new testers and strengthened the team's QA culture</li>
+							</ul>
+							<ul class="tags">
+								<li>Selenium</li>
+								<li>TestNG</li>
+								<li>Jenkins</li>
+								<li>Bitbucket</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="case">
+						<div>
+							<div class="logo-tile"><img src="assets/images/emmerce.png" alt="Emmerce" /></div>
+							<p class="meta">QA consultant</p>
+						</div>
+						<div>
+							<h3>Test strategy and automation adoption</h3>
+							<p class="brief">Advised on how to test, what to automate and how to report on quality.</p>
+							<ul class="done">
+								<li>Set up structured testing processes and risk-based testing</li>
+								<li>Improved coverage and quality reporting</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="case">
+						<div>
+							<div class="logo-tile"><img src="assets/images/systech.png" alt="Systech" /></div>
+							<p class="meta">QA analyst</p>
+						</div>
+						<div>
+							<h3>Pension and retirement benefits software</h3>
+							<p class="brief">Improved how quality was built into an enterprise pensions platform.</p>
+							<ul class="done">
+								<li>Led QA process improvements and introduced modern testing tools</li>
+								<li>Worked with developers to catch defects earlier in the SDLC</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section class="block cta-band" id="contact">
+			<div class="wrap contact-grid">
+				<div>
+					<p class="contact-line">Open to working together.</p>
+					<p class="contact-sub">I'm open to full-time roles, contracts and consulting. Tell me about the team and what you're shipping, and I'll reply with how I can help.</p>
+					<a class="btn primary" href="mailto:mboyacliffoch@gmail.com?subject=Let%27s%20work%20together">Email mboyacliffoch@gmail.com</a>
+					<ul class="contact-list">
+						<li><a href="https://www.linkedin.com/in/cliff-mboya-18208ab1/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+						<li><a href="https://github.com/Cliff-Mboya" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+						<li>Nairobi, Kenya</li>
+					</ul>
+				</div>
+				<ul class="open-to" aria-label="Ways we can work together">
+					<li><h3>Full-time roles</h3><p>Senior QA and test automation positions on product and engineering teams.</p></li>
+					<li><h3>Contract and consulting</h3><p>Fixed-term engagements to set up test strategy, automation or a QA practice.</p></li>
+					<li><h3>Release support</h3><p>Hands-on UAT, SIT and regression for a specific launch or go-live.</p></li>
+				</ul>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="wrap">&copy; 2026 Cliff Mboya</div>
+	</footer>
+
+	<script>
+	(function () {
+		var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		var hasIO = 'IntersectionObserver' in window;
+		function onView(el, fn, t) {
+			if (!el) return;
+			if (!hasIO) { fn(); return; }
+			var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); fn(); } }, { threshold: t || 0.35 });
+			io.observe(el);
+		}
+
+		// Sticky header shadow and active section in the menu
+		var header = document.querySelector('header.top');
+		window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+		var links = document.querySelectorAll('nav.links a');
+		if (hasIO) {
+			var map = {};
+			links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+			var spy = new IntersectionObserver(function (entries) {
+				entries.forEach(function (en) {
+					if (en.isIntersecting && map[en.target.id]) {
+						links.forEach(function (a) { a.classList.remove('active'); });
+						map[en.target.id].classList.add('active');
+					}
+				});
+			}, { rootMargin: '-45% 0px -50% 0px' });
+			Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+		}
+
+		// Track record: count the numbers up when they come into view
+		var figs = document.querySelectorAll('.fig[data-count]');
+		var swap = document.querySelector('.fig.swap');
+		function fmt(n) { return n.toLocaleString('en-US'); }
+		if (reduce) { if (swap) swap.classList.add('done'); }
+		else {
+			figs.forEach(function (f) { f.textContent = '0' + f.dataset.suffix; });
+			onView(document.querySelector('.stats'), function () {
+				var start = null, dur = 1400;
+				function tick(ts) {
+					if (!start) start = ts;
+					var p = Math.min((ts - start) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+					figs.forEach(function (f) { f.textContent = fmt(Math.round(+f.dataset.count * e)) + f.dataset.suffix; });
+					if (p < 1) requestAnimationFrame(tick);
+					else if (swap) setTimeout(function () { swap.classList.add('done'); }, 250);
+				}
+				requestAnimationFrame(tick);
+			});
+		}
+
+		// FundZi: bar fills in, and the M-Pesa prompt can be tapped to contribute
+		var bar = document.getElementById('fz-bar'), amtEl = document.getElementById('fz-amt');
+		var pay = document.getElementById('fz-pay'), msg = document.getElementById('fz-msg'), sub = document.getElementById('fz-sub');
+		var raised = 68400, goal = 100000, busy = false;
+		if (bar && !reduce) {
+			bar.style.width = '0%';
+			onView(document.getElementById('fz-demo'), function () { bar.style.width = (raised / goal * 100) + '%'; });
+		}
+		if (pay) pay.addEventListener('click', function () {
+			if (busy) return;
+			if (raised >= goal) { raised = 68400; amtEl.textContent = fmt(raised); bar.style.width = '68.4%'; msg.textContent = 'Pay KES 1,000 to FUNDZI?'; sub.textContent = 'Tap to send'; pay.classList.remove('ok'); return; }
+			busy = true; sub.textContent = 'Sending…';
+			setTimeout(function () {
+				raised = Math.min(raised + 1000, goal);
+				amtEl.textContent = fmt(raised);
+				bar.style.width = (raised / goal * 100) + '%';
+				pay.classList.add('ok');
+				msg.textContent = raised >= goal ? 'Goal reached. Thank you!' : 'Confirmed. KES 1,000 received.';
+				sub.textContent = raised >= goal ? 'Tap to reset' : 'Tap to give again';
+				busy = false;
+			}, reduce ? 0 : 700);
+		});
+
+		// AfyaOS: play the booking chat message by message
+		var chat = document.querySelector('#afya-demo .chat');
+		var replay = document.getElementById('afya-replay');
+		if (chat) {
+			var msgs = Array.prototype.slice.call(chat.querySelectorAll('.msg'));
+			var typing = document.createElement('span');
+			typing.className = 'typing'; typing.innerHTML = '<i></i><i></i><i></i>';
+			typing.setAttribute('aria-hidden', 'true');
+			var timers = [];
+			function play() {
+				if (reduce) return;
+				timers.forEach(clearTimeout); timers = [];
+				chat.classList.add('play');
+				msgs.forEach(function (m) { m.classList.remove('show'); });
+				var t = 200;
+				msgs.forEach(function (m) {
+					if (m.classList.contains('out')) {
+						timers.push(setTimeout(function () { chat.insertBefore(typing, m); typing.classList.add('on'); }, t));
+						t += 900;
+						timers.push(setTimeout(function () { typing.classList.remove('on'); m.classList.add('show'); }, t));
+					} else {
+						timers.push(setTimeout(function () { m.classList.add('show'); }, t));
+					}
+					t += 700;
+				});
+			}
+			if (reduce && replay) replay.hidden = true;
+			if (!reduce) { chat.classList.add('play'); onView(document.getElementById('afya-demo'), play, 0.5); }
+			if (replay) replay.addEventListener('click', play);
+		}
+	})();
+	</script>
+	<script>
+	// Pixel bugs crawl in the left margin only. Click one to fix it; the rest get caught on their own.
+	(function () {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		var layer = document.createElement('div');
+		layer.className = 'bug-layer';
+		layer.setAttribute('aria-hidden', 'true');
+		document.body.appendChild(layer);
+		var counter = document.createElement('div');
+		counter.className = 'bug-count';
+		counter.setAttribute('aria-live', 'polite');
+		document.body.appendChild(counter);
+
+		// Beetle: black body, white outline (CSS), a 0 or 1 on its back
+		function sprite(bit) {
+			var c = '#111';
+			return '<svg viewBox="0 0 26 26"><g class="legs" stroke="' + c + '" stroke-width="1.6" stroke-linecap="round" fill="none">' +
+				'<path d="M8 10 L3 7"/><path d="M18 10 L23 7"/><path d="M7.5 14 L2 14"/><path d="M18.5 14 L24 14"/><path d="M8 18 L3 21"/><path d="M18 18 L23 21"/></g>' +
+				'<path d="M11 5.5 L9 2.5 M15 5.5 L17 2.5" stroke="' + c + '" stroke-width="1.4" stroke-linecap="round"/>' +
+				'<ellipse cx="13" cy="7.5" rx="3.6" ry="3" fill="' + c + '"/>' +
+				'<ellipse cx="13" cy="15.5" rx="6" ry="7.5" fill="' + c + '"/>' +
+				'<circle cx="11.6" cy="6.9" r="0.8" fill="#fff"/><circle cx="14.4" cy="6.9" r="0.8" fill="#fff"/>' +
+				'<g class="digit"><text class="bit" x="13" y="18.2" text-anchor="middle">' + bit + '</text></g></svg>';
+		}
+
+		var bugs = [], fixed = 0, last = 0, spawnAt = 1200, lane = 0;
+		var content = document.querySelector('.wrap');
+		function laneWidth() {
+			// space between the screen edge and where the content starts
+			var r = content.getBoundingClientRect();
+			var contentRight = r.right - parseFloat(getComputedStyle(content).paddingRight);
+			return Math.floor(document.documentElement.clientWidth - contentRight) - 12;
+		}
+		function spawn() {
+			var h = window.innerHeight, fromTop = Math.random() < 0.5;
+			var el = document.createElement('button');
+			el.type = 'button'; el.className = 'bug walk'; el.tabIndex = -1;
+			var bit = Math.random() < 0.5 ? 1 : 0;
+			el.innerHTML = sprite(bit);
+			layer.appendChild(el);
+			var b = { el: el, x: 12 + Math.random() * Math.max(lane - 36, 1), y: fromTop ? -20 : h + 20,
+				a: fromTop ? Math.PI / 2 : -Math.PI / 2, v: 0.5 + Math.random() * 0.5,
+				life: 10000 + Math.random() * 12000, age: 0, dead: false, pause: 0, digit: el.querySelector('.digit') };
+			el.addEventListener('click', function () { kill(b, true); });
+			bugs.push(b);
+		}
+		function kill(b, byHand) {
+			if (b.dead) return;
+			b.dead = true; b.el.classList.remove('walk'); b.el.classList.add('dead');
+			var sp = document.createElement('span'); sp.className = 'splat';
+			sp.style.left = (b.x - 12) + 'px'; sp.style.top = (b.y - 12) + 'px'; layer.appendChild(sp);
+			var pop = document.createElement('span'); pop.className = 'fixed-pop';
+			pop.textContent = byHand ? 'FIXED' : 'CAUGHT IN REGRESSION';
+			pop.style.maxWidth = Math.max(lane - 8, 40) + 'px';
+			pop.style.left = Math.min(Math.max(b.x - 24, 14), Math.max(lane - 70, 14)) + 'px'; pop.style.top = (b.y - 40) + 'px'; layer.appendChild(pop);
+			fixed++;
+			counter.innerHTML = 'Bugs fixed: <b>' + fixed + '</b>';
+			counter.classList.add('on');
+			setTimeout(function () { b.el.remove(); sp.remove(); pop.remove(); }, 2200);
+		}
+		function step(ts) {
+			var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
+			lane = laneWidth();
+			layer.style.width = Math.max(lane, 0) + 'px';
+			var room = lane >= 44;
+			layer.style.display = room ? '' : 'none';
+			if (!document.hidden && room) {
+				spawnAt -= dt;
+				var alive = bugs.filter(function (b) { return !b.dead; }).length;
+				if (spawnAt <= 0 && alive < 3) { spawn(); spawnAt = 2500 + Math.random() * 3500; }
+				var h = window.innerHeight, minX = 26, maxX = lane - 18;
+				bugs.forEach(function (b) {
+					if (b.dead) return;
+					b.age += dt;
+					if (b.age > b.life && b.y > 80 && b.y < h - 20) { kill(b, false); return; }
+					if (b.pause > 0) { b.pause -= dt; b.el.classList.remove('walk'); }
+					else {
+						b.el.classList.add('walk');
+						b.a += (Math.random() - 0.5) * 0.25;
+						// keep heading mostly up or down inside the narrow lane
+						if (b.x < minX) b.a = Math.PI / 2 * (Math.sin(b.a) >= 0 ? 1 : -1) - 0.4 * (Math.sin(b.a) >= 0 ? 1 : -1);
+						if (b.x > maxX) b.a = Math.PI / 2 * (Math.sin(b.a) >= 0 ? 1 : -1) + 0.4 * (Math.sin(b.a) >= 0 ? 1 : -1);
+						if (b.y < 80 && Math.sin(b.a) < 0) b.a = Math.PI / 2 + (Math.random() - 0.5) * 0.6;
+						if (b.y > h - 64 && Math.sin(b.a) > 0) b.a = -Math.PI / 2 + (Math.random() - 0.5) * 0.6;
+						b.x += Math.cos(b.a) * b.v * dt / 16; b.y += Math.sin(b.a) * b.v * dt / 16;
+						b.x = Math.min(Math.max(b.x, minX - 2), maxX + 2);
+						if (Math.random() < 0.005) b.pause = 400 + Math.random() * 1200;
+					}
+					var deg = (b.a + Math.PI / 2) * 180 / Math.PI;
+					b.el.style.transform = 'translate(' + (b.x - 14) + 'px,' + (b.y - 14) + 'px) rotate(' + deg + 'deg)';
+					b.digit.setAttribute('transform', 'rotate(' + (-deg) + ' 13 15.5)');
+				});
+				bugs = bugs.filter(function (b) { return !b.dead || b.el.isConnected; });
+			}
+			requestAnimationFrame(step);
+		}
+		requestAnimationFrame(step);
+	})();
+	</script>
 </body>
-
 </html>
